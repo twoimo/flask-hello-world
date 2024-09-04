@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}인사말{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl container mx-auto px-4 py-16 bg-gray-50 rounded-lg shadow-lg">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8">(주)린코리아를 방문해주셔서 감사드립니다.</h1>
+    
+    <div class="bg-white rounded-lg shadow-md p-8 mb-12 flex flex-col md:flex-row items-center">
+        <!-- Image Section -->
+        <div class="md:w-1/3 mb-8 md:mb-0 md:mr-8">
+            <img src="{{ url_for('static', filename='img/ceo.jpg') }}" alt="CEO Image" class="w-full h-auto rounded-lg shadow-md">
+        </div>
+        
+        <!-- Text Section -->
+        <div class="md:w-2/3">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4">대표이사 인사말</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                (주)린코리아는 건설재료 제조 전문업체입니다.<br>
+                콘크리트 표면마감 1액형 세라믹코팅제(불연재)/방열도료/특수목적코팅제/콘크리트 표면 강화제 <br>
+                콘크리트 코팅제(실러)/특수시멘트/구체방수제(방청)/탄성도막방수제/침투식 교면방수제/발수제/에폭시 등 <br>
+                최고 품질의 제품을 생산하는 저희 회사는 우수한 품질을 위해서 끊임없이 연구하고 노력하여 발전해왔습니다. <br>
+                앞으로도 고객을 우선으로 함께 성장하는 기업이 될 수 있도록 최선을 다하겠습니다.
+            </p>
+            <p class="text-xl text-gray-800 font-semibold">(주)린코리아 대표 김성린</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

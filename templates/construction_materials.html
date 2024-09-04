@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}(주)린코리아 - 건설자재사업부{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto mt-10 px-4">
+    <h1 class="text-4xl font-bold mb-6 text-center text-gray-800">건설자재사업부</h1>
+    <p class="mb-8 text-lg text-gray-700 leading-relaxed text-center">
+        건설자재사업부는 고품질의 건설자재를 생산하여 건설 산업의 발전에 기여하고 있습니다. <br>
+        우리의 주요 제품인 RIN-COAT를 비롯한 다양한 건설자재를 생산하고 있습니다.
+    </p>
+    
+    <h2 class="text-3xl font-semibold mt-10 mb-6 text-gray-800">주요 장비</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col items-center">
+            <img src="{{ url_for('static', filename='images/equipment1.jpg') }}" alt="생산 장비 1" class="w-full h-auto rounded-lg shadow-lg">
+            <p class="mt-4 text-center text-gray-700">고성능 믹서</p>
+        </div>
+        <div class="flex flex-col items-center">
+            <img src="{{ url_for('static', filename='images/equipment2.jpg') }}" alt="생산 장비 2" class="w-full h-auto rounded-lg shadow-lg">
+            <p class="mt-4 text-center text-gray-700">자동화 생산 라인</p>
+        </div>
+    </div>
+    
+    <h2 class="text-3xl font-semibold mt-10 mb-6 text-gray-800">테스트 과정</h2>
+    <div class="w-full h-auto rounded-lg shadow-lg">
+        <iframe width="100%" height="720" src="https://www.youtube.com/embed/EuZSWfVxBlA?si=xuxrjnhTQYL9GkTc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+{% endblock %}

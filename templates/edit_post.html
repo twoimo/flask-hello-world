@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}(주)린코리아 - 게시물 수정{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">게시물 수정</h1>
+    
+    <form action="{{ url_for('inquiry.edit_post', post_id=post.id) }}" method="post">
+        <div class="mb-6">
+            <label for="title" class="block text-gray-700 text-sm font-bold mb-2">제목</label>
+            <input type="text" id="title" name="title" value="{{ post.title }}" class="shadow appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        
+        <div class="mb-6">
+            <label for="content" class="block text-gray-700 text-sm font-bold mb-2">내용</label>
+            <textarea id="content" name="content" rows="10" class="shadow appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" required>{{ post.content }}</textarea>
+        </div>
+
+        <div class="mb-6">
+            <label for="category" class="block text-gray-700 text-sm font-bold mb-2">카테고리</label>
+            <select id="category" name="category" class="shadow appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <option value="공지사항" {% if post.category == '공지사항' %}selected{% endif %}>공지사항</option>
+                <option value="뉴스" {% if post.category == '뉴스' %}selected{% endif %}>뉴스</option>
+                <option value="건설자재사업부" {% if post.category == '건설자재사업부' %}selected{% endif %}>건설자재사업부</option>
+                <option value="건설기계사업부" {% if post.category == '건설기계사업부' %}selected{% endif %}>건설기계사업부</option>
+                <option value="시공문의" {% if post.category == '시공문의' %}selected{% endif %}>시공문의</option>
+                <option value="자재문의" {% if post.category == '자재문의' %}selected{% endif %}>자재문의</option>
+                <option value="시공실적" {% if post.category == '시공실적' %}selected{% endif %}>시공실적</option>
+            </select>
+        </div>
+        
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                수정
+            </button>
+            <a href="{{ url_for('inquiry.view_post', post_id=post.id) }}" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                취소
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}(주)린코리아, 세라믹 코팅의 모든 것 {% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/rinkorea-favicon.png') }}" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <nav class="bg-white shadow-lg relative z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="/" class="flex items-center py-4 px-2">
+                            <img src="{{ url_for('static', filename='img/rinkorea_logo.png') }}" alt="린코리아 로고" class="h-12 w-auto">
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <div class="relative group">
+                        <a href="/greeting" class="py-4 px-2 text-gray-700 hover:text-blue-600 font-semibold">회사소개</a>
+                        <div class="absolute left-0 hidden group-hover:block bg-white shadow-lg mt-1 rounded w-32 transition duration-300 ease-in-out transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                            <a href="/greeting" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">인사말</a>
+                            <a href="/business_areas" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">사업분야</a>
+                            <a href="/directions" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">오시는길</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a href="/construction_materials" class="py-4 px-2 text-gray-700 hover:text-blue-600 font-semibold">건설자재사업부</a>
+                        <div class="absolute left-0 hidden group-hover:block bg-white shadow-lg mt-1 rounded w-48 transition duration-300 ease-in-out transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                            <a href="/product_guide" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">제품안내</a>
+                            <a href="/certificates" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">인증서</a>
+                            <a href="{{ url_for('inquiry.inquiry_board', category='건설자재사업부') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">자료실</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a href="/construction_machinery" class="py-4 px-2 text-gray-700 hover:text-blue-600 font-semibold">건설기계사업부</a>
+                        <div class="absolute left-0 hidden group-hover:block bg-white shadow-lg mt-1 rounded w-48 transition duration-300 ease-in-out transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                            <a href="/concrete_grinder" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">콘크리트 연삭기</a>
+                            <a href="/as" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">공식서비스센터</a>
+                            <a href="{{ url_for('inquiry.inquiry_board', category='건설기계사업부') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">자료실</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a href="/specialized_construction" class="py-4 px-2 text-gray-700 hover:text-blue-600 font-semibold">시공전문팀</a>
+                        <div class="absolute left-0 hidden group-hover:block bg-white shadow-lg mt-1 rounded w-48 transition duration-300 ease-in-out transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                            <a href="{{ url_for('inquiry.inquiry_board', category='시공문의') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">시공문의</a>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('inquiry.inquiry_board', category='자재문의') }}" class="py-4 px-2 text-gray-700 hover:text-blue-600 font-semibold">자재문의</a>
+                    <a href="{{ url_for('inquiry.inquiry_board', category='시공실적') }}" class="py-4 px-2 text-gray-700 hover:text-blue-600 font-semibold">시공실적</a>
+                    {% if current_user.is_authenticated %}
+                        <!-- <span class="py-2 px-2 font-medium text-gray-700">{{ current_user.username }}</span> -->
+                        <a href="{{ url_for('auth.logout') }}" class="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">로그아웃</a>
+                    {% else %}
+                        <!-- <a href="{{ url_for('auth.login') }}" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">로그인</a> -->
+                        <!-- <a href="{{ url_for('auth.register') }}" class="py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300">회원가입</a> -->
+                    {% endif %}
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="toggleMenu()">
+                        <i class="fas fa-bars w-6 h-6 text-gray-500 hover:text-gray-900"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden mobile-menu md:hidden transition duration-300 ease-in-out transform z-50" id="mobile-menu">
+            <ul class="bg-white shadow-lg rounded-lg">
+                <li class="border-b">
+                    <a href="/" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">회사소개</a>
+                    <ul class="pl-4">
+                        <li><a href="/greeting" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">인사말</a></li>
+                        <li><a href="/business_areas" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">사업분야</a></li>
+                        <li><a href="/directions" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">오시는길</a></li>
+                    </ul>
+                </li>
+                <li class="border-b">
+                    <a href="/construction_materials" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">건설자재사업부</a>
+                    <ul class="pl-4">
+                        <li><a href="/product_guide" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">제품안내</a></li>
+                        <li><a href="/certificates" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">인증서</a></li>
+                        <li><a href="{{ url_for('inquiry.inquiry_board', category='건설자재사업부') }}" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">자료실</a></li>
+                    </ul>
+                </li>
+                <li class="border-b">
+                    <a href="/construction_machinery" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">건설기계사업부</a>
+                    <ul class="pl-4">
+                        <li><a href="/concrete_grinder" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">콘크리트 연삭기</a></li>
+                        <li><a href="/as" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">공식서비스센터</a></li>
+                        <li><a href="{{ url_for('inquiry.inquiry_board', category='건설기계사업부') }}" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">자료실</a></li>
+                    </ul>
+                </li>
+                <li class="border-b">
+                    <a href="/specialized_construction" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">시공전문팀</a>
+                    <ul class="pl-4">
+                        <li><a href="{{ url_for('inquiry.inquiry_board', category='시공문의') }}" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">시공문의</a></li>
+                    </ul>
+                </li>
+                <li class="border-b">
+                    <a href="{{ url_for('inquiry.inquiry_board', category='자재문의') }}" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">자재문의</a>
+                </li>
+                <li class="border-b">
+                    <a href="{{ url_for('inquiry.inquiry_board', category='시공실적') }}" class="block text-sm px-2 py-4 text-gray-700 hover:bg-gray-200">시공실적</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                    <li class="border-b">
+                        <span class="block text-sm px-2 py-4 text-gray-700">{{ current_user.username }}</span>
+                    </li>
+                    <li class="border-b">
+                        <a href="{{ url_for('auth.logout') }}" class="block text-sm px-2 py-4 text-white bg-red-500 hover:bg-red-400 transition duration-300">로그아웃</a>
+                    </li>
+                {% else %}
+                    <li class="border-b">
+                        <a href="{{ url_for('auth.login') }}" class="block text-sm px-2 py-4 text-white bg-green-500 hover:bg-green-400 transition duration-300">로그인</a>
+                    </li>
+                    <li class="border-b">
+                        <a href="{{ url_for('auth.register') }}" class="block text-sm px-2 py-4 text-white bg-blue-500 hover:bg-blue-400 transition duration-300">회원가입</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-4 flex-grow">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="bg-gray-900 text-white py-8 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <p class="text-lg font-semibold">&copy; 2024 (주)린코리아. All rights reserved.</p>
+                    <div class="mt-4 flex justify-center md:justify-start space-x-4">
+                        <a href="https://blog.naver.com/rinkorea" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <img src="{{ url_for('static', filename='img/naver_blog_logo.png') }}" alt="네이버 블로그" class="h-12 w-auto">
+                        </a>
+                        <a href="https://www.instagram.com/rinkorea_kr" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <img src="{{ url_for('static', filename='img/instagram_logo.png') }}" alt="인스타그램" class="h-12 w-auto">
+                        </a>
+                        <a href="https://www.youtube.com/@rinkorea" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <img src="{{ url_for('static', filename='img/youtube_logo.png') }}" alt="유튜브" class="h-12 w-auto">
+                        </a>
+                    </div>
+                </div>
+                <div class="text-sm text-center md:text-right">
+                    <p class="mb-2">주소: 인천광역시 서구 백범로 707 (주안국가산업단지), 린코리아</p>
+                    <p class="mb-2">이메일: <a href="mailto:2019@rinkorea.com" class="text-blue-400 hover:underline">2019@rinkorea.com</a></p>
+                    <p class="mb-2">전화: 032-571-1023</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

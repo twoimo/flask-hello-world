@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}사업 분야{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-12">(주)린코리아 - 사업 분야</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <img src="{{ url_for('static', filename='img/business1.jpg') }}" alt="사업 분야 1" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">건설재료사업부</h3>
+                <p class="text-gray-600 leading-relaxed">콘크리트폴리싱 자재, 방열도료, 구체방수제, 특수목적코팅제 등</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <img src="{{ url_for('static', filename='img/business2.jpg') }}" alt="사업 분야 2" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">신소재 불연 세라믹코팅제</h3>
+                <p class="text-gray-600 leading-relaxed">특허제품, 콘크리트 표면마감 1액형, 무기질 코팅제</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <img src="{{ url_for('static', filename='img/business3.jpg') }}" alt="사업 분야 3" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">건설기계사업부</h3>
+                <p class="text-gray-600 leading-relaxed">콘크리트 연삭기, 연마기, 콘크리트 폴리싱 장비 등</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <img src="{{ url_for('static', filename='img/business4.jpg') }}" alt="사업 분야 4" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">R&D</h3>
+                <p class="text-gray-600 leading-relaxed">건설재료 연구&개발</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

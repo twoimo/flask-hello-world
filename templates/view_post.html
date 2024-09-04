@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}게시물 보기{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-4">{{ post.title }}</h1>
+    <p class="text-gray-600 mb-4">작성자: {{ user.username }} | 작성일: {{ post.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    <p class="text-gray-600 mb-4">카테고리: {{ post.category }}</p>
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <p class="text-gray-800">{{ post.content | replace('\n', '<br>') | safe }}</p>
+    </div>
+
+    <div class="flex items-center space-x-4 mb-6">
+        <i id="like-icon" class="fas fa-thumbs-up text-blue-500 cursor-pointer text-2xl" {% if user_liked %}data-liked="true"{% else %}data-liked="false"{% endif %}></i>
+        <span id="like-count" class="text-xl">{{ post.likes|length }}</span>
+        <i id="dislike-icon" class="fas fa-thumbs-down text-red-500 cursor-pointer text-2xl" {% if user_disliked %}data-disliked="true"{% else %}data-disliked="false"{% endif %}></i>
+        <span id="dislike-count" class="text-xl">{{ post.dislikes|length }}</span>
+    </div>
+
+    {% if current_user.is_authenticated and current_user.id == post.user_id %}
+    <div class="flex justify-end space-x-2 mb-6">
+        <a href="{{ url_for('inquiry.edit_post', post_id=post.id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">수정</a>
+        <form action="{{ url_for('inquiry.delete_post', post_id=post.id) }}" method="post" class="inline" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">삭제</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <hr class="border-gray-300 mb-6">
+
+    <h2 class="text-2xl font-semibold mb-4">댓글</h2>
+    <div class="space-y-4 mb-6">
+        {% for comment_with_user in comments %}
+            <div class="p-4 bg-white rounded-lg shadow-md">
+                <div class="flex justify-between items-center mb-2">
+                    <p class="text-gray-600">{{ comment_with_user.user.username }} | {{ comment_with_user.comment.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                    {% if current_user.is_authenticated and current_user.id == comment_with_user.comment.user_id %}
+                    <div class="flex space-x-2">
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-sm" onclick="showEditForm({{ comment_with_user.comment.id }})">수정</a>
+                        <form action="{{ url_for('inquiry.delete_comment', comment_id=comment_with_user.comment.id) }}" method="post" class="inline" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-sm">삭제</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+                <p class="text-gray-800" id="comment-content-{{ comment_with_user.comment.id }}">{{ comment_with_user.comment.content | replace('\n', '<br>') | safe }}</p>
+                <form id="edit-form-{{ comment_with_user.comment.id }}" action="{{ url_for('inquiry.edit_comment', comment_id=comment_with_user.comment.id) }}" method="post" class="hidden">
+                    <textarea name="content" rows="4" class="form-control w-full p-2 border rounded mt-2">{{ comment_with_user.comment.content }}</textarea>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">수정 완료</button>
+                </form>
+            </div>
+        {% else %}
+            <p class="text-gray-500">댓글이 없습니다.</p>
+        {% endfor %}
+    </div>
+
+    <hr class="border-gray-300 mb-6">
+
+    <h2 class="text-2xl font-semibold mb-4">댓글 작성</h2>
+    
+    {% if current_user.is_authenticated %}
+    <form action="{{ url_for('inquiry.add_comment', post_id=post.id) }}" method="post" class="space-y-4">
+        <div class="form-group">
+            <textarea id="content" name="content" rows="4" class="form-control w-full p-2 border rounded mt-2" required></textarea>
+        </div>
+        <!-- 게시물 목록으로 가는 버튼 -->
+        <div class="mb-6">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">댓글 작성</button>
+            <a href="{{ url_for('inquiry.inquiry_board') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">게시물 목록으로</a>
+        </div>
+    </form>
+    {% else %}
+    <p class="text-red-500">댓글을 작성하려면 <a href="{{ url_for('auth.login') }}" class="text-blue-500 underline">로그인</a>하세요.</p>
+    {% endif %}
+</div>
+
+<script>
+document.getElementById('like-icon').addEventListener('click', function() {
+    const likeIcon = document.getElementById('like-icon');
+    const dislikeIcon = document.getElementById('dislike-icon');
+    const isLiked = likeIcon.getAttribute('data-liked') === 'true';
+
+    fetch('{{ url_for("inquiry.like_post", post_id=post.id) }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('like-count').textContent = data.likes;
+        document.getElementById('dislike-count').textContent = data.dislikes;
+        if (isLiked) {
+            likeIcon.setAttribute('data-liked', 'false');
+            likeIcon.style.opacity = '1';
+        } else {
+            likeIcon.setAttribute('data-liked', 'true');
+            likeIcon.style.opacity = '0.5';
+            dislikeIcon.setAttribute('data-disliked', 'false');
+            dislikeIcon.style.opacity = '1';
+        }
+    });
+});
+
+document.getElementById('dislike-icon').addEventListener('click', function() {
+    const dislikeIcon = document.getElementById('dislike-icon');
+    const likeIcon = document.getElementById('like-icon');
+    const isDisliked = dislikeIcon.getAttribute('data-disliked') === 'true';
+
+    fetch('{{ url_for("inquiry.dislike_post", post_id=post.id) }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('like-count').textContent = data.likes;
+        document.getElementById('dislike-count').textContent = data.dislikes;
+        if (isDisliked) {
+            dislikeIcon.setAttribute('data-disliked', 'false');
+            dislikeIcon.style.opacity = '1';
+        } else {
+            dislikeIcon.setAttribute('data-disliked', 'true');
+            dislikeIcon.style.opacity = '0.5';
+            likeIcon.setAttribute('data-liked', 'false');
+            likeIcon.style.opacity = '1';
+        }
+    });
+});
+
+function showEditForm(commentId) {
+    document.getElementById('comment-content-' + commentId).style.display = 'none';
+    document.getElementById('edit-form-' + commentId).classList.remove('hidden');
+}
+</script>
+{% endblock %}

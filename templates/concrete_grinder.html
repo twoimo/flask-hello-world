@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}콘크리트 그라인더{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-12">콘크리트 그라인더</h1>
+    <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">제품 개요</h2>
+        <p class="text-gray-600 leading-relaxed mb-6">우리의 콘크리트 그라인더는 우수한 성능과 내구성을 제공하도록 설계되었습니다. 콘크리트 표면을 연마하고 광택을 내는 데 이상적이며, 매끄럽고 고른 마감을 보장합니다.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-gray-100 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">특징</h3>
+                <ul class="list-disc list-inside text-gray-600 leading-relaxed">
+                    <li>효율적인 연마를 위한 고성능 모터</li>
+                    <li>편안한 사용을 위한 조절 가능한 핸들</li>
+                    <li>더 깨끗한 작업 환경을 위한 먼지 수집 시스템</li>
+                    <li>오래 지속되는 내구성 있는 구조</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">사양</h3>
+                <ul class="list-disc list-inside text-gray-600 leading-relaxed">
+                    <li>전력: 1500W</li>
+                    <li>속도: 3000 RPM</li>
+                    <li>무게: 12 kg</li>
+                    <li>연마 디스크 직경: 125 mm</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">제품 이미지</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <img src="{{ url_for('static', filename='img/concrete_grinder1.jpg') }}" alt="콘크리트 그라인더 이미지 1" class="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <img src="{{ url_for('static', filename='img/concrete_grinder2.jpg') }}" alt="콘크리트 그라인더 이미지 2" class="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <img src="{{ url_for('static', filename='img/concrete_grinder3.jpg') }}" alt="콘크리트 그라인더 이미지 3" class="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

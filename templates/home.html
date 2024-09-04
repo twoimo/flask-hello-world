@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>(주)린코리아</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto mt-10 px-4">
+    <!-- Image Slider -->
+    <div class="relative overflow-hidden">
+        <div class="container mx-auto">
+            <div class="flex transition-transform duration-500 ease-in-out" id="slides">
+                <div class="slide w-full flex-shrink-0 relative">
+                    <img src="{{ url_for('static', filename='img/rinkorea_main_1.png') }}" alt="Slide 1" class="w-full h-full object-cover shadow-lg">
+                </div>
+                <div class="slide w-full flex-shrink-0 relative">
+                    <img src="{{ url_for('static', filename='img/rinkorea_main_1.png') }}" alt="Slide 2" class="w-full h-full object-cover shadow-lg">
+                </div>
+                <div class="slide w-full flex-shrink-0 relative">
+                    <img src="{{ url_for('static', filename='img/rinkorea_main_1.png') }}" alt="Slide 3" class="w-full h-full object-cover shadow-lg">
+                </div>
+            </div>
+            <!-- Navigation Buttons -->
+            <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-transparent text-white p-3 rounded-full focus:outline-none">
+                <i class="fas fa-chevron-left fa-2x"></i>
+            </button>
+            <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-transparent text-white p-3 rounded-full focus:outline-none">
+                <i class="fas fa-chevron-right fa-2x"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Business Areas -->
+    <section class="py-12">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">(주)린코리아 - 사업분야</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{ url_for('static', filename='img/business1.jpg') }}" alt="Business 1" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">건설재료사업부</h3>
+                        <p class="text-gray-600">콘크리트폴리싱 자재, 방열도료, 구체방수제, 특수목적코팅제 등</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{ url_for('static', filename='img/business2.jpg') }}" alt="Business 2" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">신소재 불연 세라믹코팅제</h3>
+                        <p class="text-gray-600">특허제품, 콘크리트 표면마감 1액형, 무기질 코팅제</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{ url_for('static', filename='img/business3.jpg') }}" alt="Business 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">건설기계사업부</h3>
+                        <p class="text-gray-600">콘크리트 연삭기, 연마기, 콘크리트 폴리싱 장비 등</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{ url_for('static', filename='img/business4.jpg') }}" alt="Business 4" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">R&D</h3>
+                        <p class="text-gray-600">건설재료 연구&개발</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction/Delivery Performance -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">(주)린코리아 - 시공사례</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{ url_for('static', filename='img/example_1.jpeg') }}" alt="Performance 1" class="w-full h-74 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">INDUSTRIAL FLOOR</h3>
+                        <p class="text-gray-600">공장, 창고, 주차장 등</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{ url_for('static', filename='img/example_2.jpeg') }}" alt="Performance 2" class="w-full h-74 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">CLEEN FLOOR</h3>
+                        <p class="text-gray-600">물류센터, 대형마트, 제약회사 등</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{ url_for('static', filename='img/example_3.jpg') }}" alt="Performance 3" class="w-full h-74 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">INTERIOR FLOOR</h3>
+                        <p class="text-gray-600">사무실, 전시장, 카페 등</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News and Announcements -->
+    <section class="py-12">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">(주)린코리아 - 뉴스</h3>
+                    <ul class="list-disc list-inside text-gray-600">
+                        {% for post in news_posts %}
+                            <li class="mb-2">
+                                <a href="{{ url_for('inquiry.view_post', post_id=post.id) }}" class="text-blue-500 hover:underline">{{ post.title }}</a>
+                                <small class="text-gray-500"> - {{ post.created_at.strftime('%Y-%m-%d') }}</small>
+                            </li>
+                        {% else %}
+                            <li class="text-gray-500">뉴스 항목이 없습니다.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">(주)린코리아 - 공지사항</h3>
+                    <ul class="list-disc list-inside text-gray-600">
+                        {% for post in announcement_posts %}
+                            <li class="mb-2">
+                                <a href="{{ url_for('inquiry.view_post', post_id=post.id) }}" class="text-blue-500 hover:underline">{{ post.title }}</a>
+                                <small class="text-gray-500"> - {{ post.created_at.strftime('%Y-%m-%d') }}</small>
+                            </li>
+                        {% else %}
+                            <li class="text-gray-500">공지사항 항목이 없습니다.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directions and Customer Support -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">(주)린코리아 - 오시는 길</h3>
+                    <div id="map" style="width:100%;height:450px;"></div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">(주)린코리아 - 고객지원센터</h3>
+                    <p class="mb-2 text-gray-600">전화: 032-571-1023</p>
+                    <p class="mb-2 text-gray-600">운영시간: AM 10:00 - PM 5:30</p>
+                    <p class="mb-2 text-gray-600">사업자 등록번호: 747-42-00526</p>
+                    <p class="mb-2 text-gray-600">이메일: <a href="mailto:2019@rinkorea.com" class="text-blue-500 hover:underline">2019@rinkorea.com</a></p>
+                    <p class="text-gray-600">본사 주소: 인천광역시 서구 백범로 707 (주안국가산업단지), 린코리아</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.getElementById('slides');
+    const slideCount = slides.children.length;
+    let currentIndex = 0;
+
+    function updateSlide(index) {
+        slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    document.getElementById('prev').addEventListener('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+        updateSlide(currentIndex);
+    });
+
+    document.getElementById('next').addEventListener('click', function() {
+        currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+        updateSlide(currentIndex);
+    });
+});
+</script>
+
+<!-- 네이버 지도 API 스크립트 -->
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9br7qtboe8"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var mapOptions = {
+            center: new naver.maps.LatLng(37.4823802, 126.6785188),
+            zoom: 16
+        };
+
+        var map = new naver.maps.Map('map', mapOptions);
+
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(37.4823802, 126.6785188),
+            map: map
+        });
+
+        var infoWindow = new naver.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:10px;">(주)린코리아</div>'
+        });
+
+        naver.maps.Event.addListener(marker, 'click', function() {
+            if (infoWindow.getMap()) {
+                infoWindow.close();
+            } else {
+                infoWindow.open(map, marker);
+            }
+        });
+    });
+
+  var map = new naver.maps.Map('map', mapOptions);
+</script>
+{% endblock %}

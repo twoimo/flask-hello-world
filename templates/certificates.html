@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}인증서{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-12">인증서</h1>
+    <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">특허 및 상표등록증</h2>
+        <p class="text-gray-600 leading-relaxed mb-6">(주)린코리아는 혁신적인 제품으로 특허와 상표등록증을 받았습니다.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/certificate_of_patent.jpg') }}" alt="특허 1" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/trademark_registration_certificate.jpg') }}" alt="특허 2" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">RIN-COAT 시험성적서</h2>
+        <p class="text-gray-600 leading-relaxed mb-6">우리의 제품은 최고 품질을 보장하기 위해 엄격한 테스트를 거칩니다. 아래는 우리의 제품 테스트 사진입니다.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_1.jpg') }}" alt="테스트 1" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_2.jpg') }}" alt="테스트 2" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_3.jpg') }}" alt="테스트 3" class="w-full h-full object-cover">
+            </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_4.jpg') }}" alt="테스트 1" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_5.jpg') }}" alt="테스트 2" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_6.jpg') }}" alt="테스트 3" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_7.jpg') }}" alt="테스트 3" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_8.jpg') }}" alt="테스트 3" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_9.jpg') }}" alt="테스트 3" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+                <img src="{{ url_for('static', filename='img/test_report_10.jpg') }}" alt="테스트 3" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

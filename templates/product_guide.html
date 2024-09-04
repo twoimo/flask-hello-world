@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}(주)린코리아 - 제품안내{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-12">제품안내</h1>
+    <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+        <!-- 제품 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1 mb-2">
+            <div class="col-span-1 bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex justify-center items-center">
+                <img src="{{ url_for('static', filename='img/rincoat_1.png') }}" alt="ECO CRETE" class="w-full h-full object-cover md:w-auto md:h-auto">
+            </div>
+            <div class="col-span-2 p-6 flex flex-col justify-center">
+                <h3 class="text-3xl font-semibold mb-2 text-green-500">ECO CRETE</h3>
+                <h4 class="text-2xl font-semibold mb-4 text-gray-800">친환경 콘크리트 침투성 표면강화제 (18L)</h4>
+                <div class="mb-4">
+                    <h5 class="text-xl font-semibold text-gray-800 mb-2">제품 특징</h5>
+                    <ul class="list-disc list-inside text-gray-600 leading-relaxed pl-4">
+                        <li>콘크리트에 깊숙히 침투하여 가장 안정적이고 강한 분자구조를 만들어 표면을 강화시키고 먼지의 발생을 원천적으로 방지합니다.</li>
+                        <li>콘크리트와 완벽한 일체가 되는 제품으로 1회 시공으로 반영구적인 수명을 제공하여 시간이 지날수록 광택효과가 뛰어나며 불연성의 친환경 제품입니다.</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h5 class="text-xl font-semibold text-gray-800 mb-2">혼합</h5>
+                    <ul class="list-disc list-inside text-gray-600 leading-relaxed pl-4">
+                        <li>에코크리트와 물을 1:3로 희석하여 사용하되 바닥상태에 따라 증감할 수 있다.(2회 도포가 안정)</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h5 class="text-xl font-semibold text-gray-800 mb-2">용도</h5>
+                    <ul class="list-disc list-inside text-gray-600 leading-relaxed pl-4">
+                        <li>내마모성, 내충격성, 효과가 뛰어나며, 오일 등의 오염물질 침투를 방지한다.</li>
+                        <li>시공이 간편하며, 콘크리트 표면에 영구적인 광택을 제공한다</li>
+                        <li>에코그리트의 수명은 바닥면과 동일하므로 특별한 유지보수가 필요없다.</li>
+                        <li>불연성이며, 방진효과 및 내구성이 매우 우수하다.</li>
+                        <li>차량주행시 마찰소음 방지효과가 뛰어나다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+        <!-- 제품 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1 mb-2">
+            <div class="col-span-1 bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex justify-center items-center">
+                <img src="{{ url_for('static', filename='img/rincoat_1.png') }}" alt="ECO CRETE" class="w-full h-full object-cover md:w-auto md:h-auto">
+            </div>
+            <div class="col-span-2 p-6 flex flex-col justify-center">
+                <h3 class="text-3xl font-semibold mb-2 text-green-500">ECO CRETE</h3>
+                <h4 class="text-2xl font-semibold mb-4 text-gray-800">친환경 콘크리트 침투성 표면강화제 (18L)</h4>
+                <div class="mb-4">
+                    <h5 class="text-xl font-semibold text-gray-800 mb-2">제품 특징</h5>
+                    <ul class="list-disc list-inside text-gray-600 leading-relaxed pl-4">
+                        <li>콘크리트에 깊숙히 침투하여 가장 안정적이고 강한 분자구조를 만들어 표면을 강화시키고 먼지의 발생을 원천적으로 방지합니다.</li>
+                        <li>콘크리트와 완벽한 일체가 되는 제품으로 1회 시공으로 반영구적인 수명을 제공하여 시간이 지날수록 광택효과가 뛰어나며 불연성의 친환경 제품입니다.</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h5 class="text-xl font-semibold text-gray-800 mb-2">혼합</h5>
+                    <ul class="list-disc list-inside text-gray-600 leading-relaxed pl-4">
+                        <li>에코크리트와 물을 1:3로 희석하여 사용하되 바닥상태에 따라 증감할 수 있다.(2회 도포가 안정)</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h5 class="text-xl font-semibold text-gray-800 mb-2">용도</h5>
+                    <ul class="list-disc list-inside text-gray-600 leading-relaxed pl-4">
+                        <li>내마모성, 내충격성, 효과가 뛰어나며, 오일 등의 오염물질 침투를 방지한다.</li>
+                        <li>시공이 간편하며, 콘크리트 표면에 영구적인 광택을 제공한다</li>
+                        <li>에코그리트의 수명은 바닥면과 동일하므로 특별한 유지보수가 필요없다.</li>
+                        <li>불연성이며, 방진효과 및 내구성이 매우 우수하다.</li>
+                        <li>차량주행시 마찰소음 방지효과가 뛰어나다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}(주)린코리아 - 시공사업팀{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto mt-10 px-4">
+    <h1 class="text-4xl font-bold mb-6 text-center text-gray-800">시공사업팀</h1>
+    <p class="mb-8 text-lg text-gray-700 leading-relaxed text-center">
+        시공사업팀은 고도의 기술력과 경험을 바탕으로 다양한 건설 프로젝트를 수행하고 있습니다. <br>
+        RIN-COAT를 비롯한 당사의 제품을 활용하여 최고 품질의 시공 서비스를 제공합니다.
+    </p>
+    
+    <h2 class="text-3xl font-semibold mt-10 mb-6 text-gray-800">주요 프로젝트</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col items-center">
+            <img src="{{ url_for('static', filename='images/project1.jpg') }}" alt="프로젝트 1" class="w-full h-auto rounded-lg shadow-lg cursor-pointer" onclick="openModal(this)">
+            <p class="mt-4 text-center text-gray-700">대규모 주거단지 시공</p>
+        </div>
+        <div class="flex flex-col items-center">
+            <img src="{{ url_for('static', filename='images/project2.jpg') }}" alt="프로젝트 2" class="w-full h-auto rounded-lg shadow-lg cursor-pointer" onclick="openModal(this)">
+            <p class="mt-4 text-center text-gray-700">상업시설 내외장 공사</p>
+        </div>
+    </div>
+    
+    <h2 class="text-3xl font-semibold mt-10 mb-6 text-gray-800">시공 과정</h2>
+    <video controls class="w-full h-auto rounded-lg shadow-lg">
+        <source src="{{ url_for('static', filename='videos/construction_process.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+    <div class="relative">
+        <button class="absolute top-0 right-0 mt-2 mr-2 text-white text-3xl" onclick="closeModal()">&times;</button>
+        <img id="modalImage" src="" alt="Modal Image" class="max-w-full max-h-full rounded-lg shadow-lg">
+    </div>
+</div>
+
+<script>
+    function openModal(element) {
+        document.getElementById('modalImage').src = element.src;
+        document.getElementById('imageModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('imageModal').classList.add('hidden');
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}(주)린코리아 - 새 글 작성{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">새 글 작성</h1>
+    
+    <form action="{{ url_for('inquiry.new_post') }}" method="post">
+        <div class="mb-6">
+            <label for="title" class="block text-gray-700 text-sm font-bold mb-2">제목</label>
+            <input type="text" id="title" name="title" class="shadow appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        
+        <div class="mb-6">
+            <label for="content" class="block text-gray-700 text-sm font-bold mb-2">내용</label>
+            <textarea id="content" name="content" rows="10" class="shadow appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+        </div>
+
+        <div class="mb-6">
+            <label for="category" class="block text-gray-700 text-sm font-bold mb-2">카테고리</label>
+            <select id="category" name="category" class="shadow appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <option value="공지사항">공지사항</option>
+                <option value="뉴스">뉴스</option>
+                <option value="건설자재사업부">건설자재사업부</option>
+                <option value="건설기계사업부">건설기계사업부</option>
+                <option value="시공문의">시공문의</option>
+                <option value="자재문의">자재문의</option>
+                <option value="시공실적">시공실적</option>
+            </select>
+        </div>
+        
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                작성
+            </button>
+            <a href="javascript:history.back()" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                취소
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

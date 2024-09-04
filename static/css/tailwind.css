@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 커스텀 스타일 */
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  }
+
+  .card {
+    @apply bg-white shadow-md rounded-lg p-6;
+  }
+
+  .input-field {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+}
+
+/* 추가 커스텀 스타일 */
+.text-primary {
+  @apply text-blue-600;
+}
+
+.bg-primary {
+  @apply bg-blue-600;
+}
+
+/* 린코리아 전용 스타일 */
+.rin-logo {
+  @apply font-bold text-2xl text-blue-600;
+}
+
+.rin-nav-link {
+  @apply text-gray-600 hover:text-blue-600 transition duration-300;
+}
+
+.rin-section-title {
+  @apply text-3xl font-bold text-gray-800 mb-4;
+}
+
+.rin-content {
+  @apply text-gray-600 leading-relaxed;
+}
