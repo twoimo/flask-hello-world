@@ -21,7 +21,7 @@ def load_user(user_id):
 with app.app_context():
     db.create_all()
 
-from app.routes import main, auth, inquiry
+from routes import main, auth, inquiry
 app.register_blueprint(main.main)
 app.register_blueprint(auth.auth)
 app.register_blueprint(inquiry.inquiry)
